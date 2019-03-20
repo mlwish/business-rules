@@ -1,0 +1,73 @@
+[
+  {
+    "conditions": {
+      "all": [
+        {
+          "name": "card_type",
+          "operator": "equal_to",
+          "value": "visa"
+        },
+        {
+          "name": "bin_num",
+          "operator": "less_than",
+          "value": 2000
+        },
+        {
+          "name": "bin_num",
+          "operator": "greater_than",
+          "value": 1000
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "psp_route",
+        "params": {"psp_option": "Braintree"}
+      }
+    ]
+  },
+  {
+    "conditions": {
+      "all": [
+        {
+          "name": "card_type",
+          "operator": "equal_to",
+          "value": "visa"
+        },
+        {
+          "name": "bin_num",
+          "operator": "less_than",
+          "value": 3000
+        },
+        {
+          "name": "bin_num",
+          "operator": "greater_than",
+          "value": 2000
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "psp_route",
+        "params": {"psp_option": "Stripe"}
+      }
+    ]
+  },
+  {
+    "conditions": {
+      "all": [
+        {
+          "name": "card_type",
+          "operator": "equal_to",
+          "value": "mastercard"
+        }
+      ]
+    },
+    "actions": [
+      {
+        "name": "psp_route",
+        "params": {"psp_option": "Adyen"}
+      }
+    ]
+  }
+]
